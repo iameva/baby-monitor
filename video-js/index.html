@@ -5,9 +5,19 @@
       <script src="video-js.js"></script>
     </head>
     <body>
-      <video autoplay muted class="video-js" controls data-setup='{"fluid": true, "liveui": true}'>
-        <source src="video/stream.m3u8" type="application/x-mpegURL">
+      <video id="my-video" class="video-js" autoplay muted controls data-setup='{}'>
       </video>
+  <script>
+    (function(videojs) {
+      var player = window.player = videojs('my-video');
+      var url = "video/stream.m3u8"
+
+      player.src({
+        src: url,
+        type: 'application/x-mpegURL'
+      });
+    })(window.videojs);
+  </script>
     </body>
 </html>
 

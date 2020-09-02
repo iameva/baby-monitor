@@ -1,2 +1,2 @@
 #!/bin/bash
-rm /www/thoughts/video/*
+rm /www/monitor/video/*

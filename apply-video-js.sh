@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp video-js/* /www/thoughts/
+cp video-js/* /www/monitor/
