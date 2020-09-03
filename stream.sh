@@ -1,6 +1,6 @@
 #!/bin/bash
 ffmpeg -re \
-  -f alsa -ac 2 -i hw:1 \
+  -f alsa -itsoffset -0.5 -ac 2 -i hw:1 \
   -f video4linux2 -framerate 30 -video_size 600x480 -i /dev/video0 \
   -c:a aac -b:a 64k -ac 1 \
   -c:v libx264 \
