@@ -1,0 +1,10 @@
+video before audio to sync it
+lets try rts
+
+#sound
+hw:1 for alsa
+default for pulse
+
+
+#video
+-profile baseline made it playable by more clients
