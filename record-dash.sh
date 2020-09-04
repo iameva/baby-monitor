@@ -1,9 +1,11 @@
 #!/bin/bash
 ffmpeg \
-  -f alsa -itsoffset -0.5 -ac 2 -i hw:1 \
   -f video4linux2 -framerate 30 -video_size 640x480 -i /dev/video0 \
+  -f pulse -ac 2 -i default \
   -c:a aac -b:a 64k -ac 1 \
   -c:v libx264 -profile:v baseline \
+  -analyzeduration 0 \
+  -probesize 32 \
   -level 3.0 -pix_fmt yuv420p \
   -crf 23 -preset veryfast -g 30 -sc_threshold 0 \
   -use_template 1 \
