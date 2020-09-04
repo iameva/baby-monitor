@@ -1,8 +1,8 @@
 #!/bin/bash
 ffmpeg \
   -f video4linux2 -framerate 30 -video_size 640x480 -i /dev/video0 \
-  -f pulse -ac 2 -i default \
-  -c:a aac -b:a 64k -ac 1 \
+  -f alsa -ac 2 -i hw:1 \
+  -c:a aac -b:a 24k -ac 1 \
   -c:v libx264 -profile:v baseline \
   -analyzeduration 0 \
   -probesize 32 \
