@@ -1,4 +1,5 @@
 #!/bin/sh -x
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$1"
 while true
 do
@@ -7,5 +8,5 @@ do
 	mkdir -p "$DIR"
 	rm "$ROOT/live"
 	ln -s "$DIR/" "$ROOT/live"
-	sh listen.sh "$DIR"
+	sh "$SCRIPT_DIR/listen.sh" "$DIR"
 done
