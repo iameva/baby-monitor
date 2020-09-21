@@ -1,2 +1,2 @@
 #!/bin/sh
-openssl rand -hex 18
+echo "$(openssl rand -hex 18)-$1"
