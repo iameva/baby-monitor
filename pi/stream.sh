@@ -6,7 +6,7 @@ ffmpeg \
   -f alsa -ac 1 -i hw:2 \
   -c:a aac -b:a 64k -ac 1 \
   -c:v libx264 \
-  -crf 17 -preset veryfast \
+  -crf 20 -preset veryfast \
   -f flv \
   rtmp://localhost:2021/live/app
 
