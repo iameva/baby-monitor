@@ -1,10 +1,12 @@
 #!/bin/sh
 ffmpeg \
-  -f video4linux2 -framerate 25 -video_size 640x360 -i /dev/video0 \
-  -f alsa -ac 1 -i 'default:CARD=U20' \
+  -use_wallclock_as_timestamps 1 \
+  -async 1 \
+  -f video4linux2 -framerate 15 -video_size 640x360 -i /dev/video0 \
+  -f alsa -ac 1 -i hw:2 \
   -c:a aac -b:a 64k -ac 1 \
   -c:v libx264 \
-  -crf 17 -preset veryfast -g 30 -sc_threshold 0 \
+  -crf 17 -preset veryfast \
   -f flv \
   rtmp://localhost:2021/live/app
 

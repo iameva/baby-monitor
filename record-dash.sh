@@ -1,16 +1,10 @@
 #!/bin/bash
 ffmpeg \
   -f video4linux2 -framerate 25 -i /dev/video2 \
-  -f alsa -ac 2 -i hw:1 \
-  -c:a aac -b:a 32k -ac 1 \
+  -f alsa -ac 1 -i hw:2 \
   -c:v libx264 -profile:v baseline \
-  -analyzeduration 0 \
-  -probesize  10240 \
   -level 3.0 -pix_fmt yuv420p \
-  -streaming 1 \
-  -index_correction 1 \
   -crf 23 -preset veryfast -g 25 -sc_threshold 0 \
-  -use_template 1 \
   -seg_duration 1 \
   -hls_playlist 1 \
   -master_pl_name stream.m3u8 \

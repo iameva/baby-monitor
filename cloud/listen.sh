@@ -4,7 +4,8 @@ ffmpeg \
   -c:a aac -b:a 64k -ac 1 \
   -c:v libx264 -profile:v main \
   -level 3.0 -pix_fmt yuv420p \
-  -crf 17 -preset veryfast -g 30 -sc_threshold 0 \
+  -crf 17 -preset veryfast -g 15 -sc_threshold 0 \
+  -async 1 \
   -use_template 1 \
   -seg_duration 1 \
   -frag_duration 1 \
