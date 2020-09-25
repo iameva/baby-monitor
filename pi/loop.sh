@@ -1,12 +1,7 @@
 #!/bin/sh -x
 
 trap "exit" INT TERM 
-
-sh "forward.sh.cloud" &
-
-sh "forward.sh.architect" &
-
-trap "kill 0" EXIT
+trap "kill $(jobs -p)" EXIT
 
 echo "Forwarding..."
 
@@ -14,9 +9,12 @@ echo "$(pwd)"
 
 while true
 do
-      sh "stream.sh"
+      sh forward.sh.cloud &
+      sh forward.sh.architect &
+      sh stream.sh
 
       echo "Stream exited"
+      kill $(jobs -p)
       sleep 1
 done
 
