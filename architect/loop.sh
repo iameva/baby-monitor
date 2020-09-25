@@ -4,7 +4,7 @@ ROOT="$1"
 while true
 do
 	DATE="$(date '+%Y-%m-%d_%H:%M:%S')"
-	DIR="$ROOT/$DATE"
+	DIR="$ROOT/$DATE/video"
 	mkdir -p "$DIR"
 	rm "$ROOT/live"
 	ln -s "$DIR/" "$ROOT/live"
