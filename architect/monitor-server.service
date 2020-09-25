@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/root/architect
-ExecStart=/bin/sh loop.sh
+ExecStart=/bin/sh loop.sh /data/monitor
 
 [Install]
 WantedBy=multi-user.target

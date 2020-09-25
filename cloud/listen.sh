@@ -9,7 +9,6 @@ ffmpeg \
   -use_template 1 \
   -seg_duration 1 \
   -frag_duration 1 \
-  -ignore_io_errors  1 \
   -streaming 1 \
   -master_pl_name stream.m3u8 \
   -hls_playlist 1 \
