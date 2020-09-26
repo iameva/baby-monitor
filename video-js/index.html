@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
       <meta charset="UTF-8">
@@ -7,17 +8,35 @@
       <script src="videojs-dash.js"></script>
     </head>
     <body>
-      <video id="my-video" class="video-js" autoplay muted controls data-setup='{"liveui":true}'>
+      <video id="my-video" autoplay muted controls>
+        <source src="video/master.m3u8" type="application/x-mpegURL">
       </video>
   <script>
-    (function(videojs) {
-      var player = window.player = videojs('my-video');
-      var url = "video/stream.mpd"
+    function supportsHLS() {
+      var video = document.createElement('video');
+      return Boolean(video.canPlayType('application/vnd.apple.mpegURL') || video.canPlayType('audio/mpegurl'))
+    }
 
-      player.src({
-        src: url,
-        type: 'application/dash+xml'
-      });
+    (function(videojs) {
+      if (!supportsHLS()) {
+        var vid = document.getElementById("my-video");
+        vid.src = "";
+        console.log("Does not support HLS");
+        vid.setAttribute("class", "video-js");
+        // vid.setAttribute("muted", "");
+        // vid.setAttribute("autoplay", "");
+        // vid.setAttribute("controls", "");
+        vid.setAttribute("data-setup", '{"liveui":true}');
+        var player = window.player = videojs('my-video');
+        var url = "video/stream.mpd";
+
+        player.src({
+          src: url,
+          type: 'application/dash+xml'
+        });
+      } else {
+        console.log("supports hls, leaving as is");
+      }
     })(window.videojs);
   </script>
     </body>
