@@ -1,6 +1,7 @@
 #!/bin/sh
 ffmpeg \
-  -f flv -listen 1 -i rtmp://localhost:2021/live/app \
+  -timeout 5000000 \
+  -i tcp://localhost:2021?listen \
   -c:a aac -b:a 24k -ac 1 \
   -c:v libx264 -profile:v baseline \
   -analyzeduration 0 \
